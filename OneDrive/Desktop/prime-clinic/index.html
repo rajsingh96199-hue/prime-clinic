@@ -903,37 +903,75 @@ box-orient: vertical; overflow: hidden; }
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
-                            <input type="text" class="form-input" placeholder="Enter your full name" required>
+                            <input
+  type="text"
+  id="name"
+  name="name"
+  class="form-input"
+  placeholder="Enter your full name"
+  required
+>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-input" placeholder="Enter your phone number" required>
+                            <input
+  type="tel"
+  id="phone"
+  name="phone"
+  class="form-input"
+  placeholder="Enter your phone number"
+  required
+>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Email Address</label>
-                            <input type="email" class="form-input" placeholder="Enter your email" required>
+                            <input
+  type="email"
+  id="email"
+  name="email"
+  class="form-input"
+  placeholder="Enter your email"
+  required
+>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Select Doctor</label>
-                            <select class="form-input form-select" required>
-                                <option value="">Choose a doctor</option>
-                                <option value="vasant">Dr. Vasant Sawant - General Physician</option>
-                                <option value="priya">Dr. Priya Sharma - Cardiologist</option>
-                                <option value="rajesh">Dr. Rajesh Kumar - Pediatrician</option>
-                                <option value="ananya">Dr. Ananya Patel - Dermatologist</option>
-                            </select>
+                           <label class="form-label">Select Doctor</label>
+
+<select
+    id="doctor"
+    name="doctor"
+    class="form-input form-select"
+    required
+>
+    <option value="">Choose a doctor</option>
+    <option value="vasant">Dr. Vasant Sawant - General Physician</option>
+    <option value="priya">Dr. Priya Sharma - Cardiologist</option>
+    <option value="rajesh">Dr. Rajesh Kumar - Pediatrician</option>
+    <option value="ananya">Dr. Ananya Patel - Dermatologist</option>
+</select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Preferred Date</label>
-                            <input type="date" class="form-input" required>
+                            <input
+  type="date"
+  id="date"
+  name="date"
+  class="form-input"
+  required
+>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Preferred Time</label>
-                            <select class="form-input form-select" required>
+                           <select
+  id="time"
+  name="time"
+  class="form-input form-select"
+  required
+>
                                 <option value="">Select time slot</option>
                                 <option value="9:00">9:00 AM</option>
                                 <option value="10:00">10:00 AM</option>
@@ -948,7 +986,12 @@ box-orient: vertical; overflow: hidden; }
                     </div>
                     <div class="form-group">
                         <label class="form-label">Reason for Visit</label>
-                        <textarea class="form-input" rows="3" placeholder="Briefly describe your symptoms or reason for visit" style="resize: vertical;"></textarea>
+                        <textarea
+  id="reason"
+  name="reason"
+  class="form-input"
+  rows="3"
+></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 16px;">
                         <i class="fas fa-calendar-check"></i> Confirm Appointment
@@ -1343,12 +1386,28 @@ box-orient: vertical; overflow: hidden; }
             }
         }
 
-        // Form Submission
+
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you! Your appointment request has been submitted. We will contact you shortly to confirm your booking.');
-            this.reset();
-        });
+    e.preventDefault();
+
+    const appointmentData = {
+        name: document.getElementById('name').value,
+        phone: document.getElementById('phone').value,
+        email: document.getElementById('email').value,
+        doctor: document.getElementById('doctor').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        reason: document.getElementById('reason').value
+    };
+
+    console.log("FORM DATA:");
+    console.log(appointmentData);
+
+    alert("NEW CODE RUNNING");
+
+    this.reset();
+});
+       
 
         // GSAP Animations
         if (typeof gsap !== 'undefined') {
