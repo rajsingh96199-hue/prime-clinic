@@ -76,24 +76,28 @@ app.post("/api/leads", async (req, res) => {
 });
 
 // Get All Appointments
-app.get("/api/leads", async (req, res) => {
+aapp.get("/create-table", async (req, res) => {
   try {
-    const result = await pool.query(
-      "SELECT * FROM appointments ORDER BY created_at DESC"
-    );
+    await pool.query(`
+      CREATE TABLE IF NOT EXISTS appointments (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(100),
+        phone VARCHAR(20),
+        email VARCHAR(100),
+        doctor VARCHAR(100),
+        appointment_date DATE,
+        appointment_time VARCHAR(20),
+        reason TEXT,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
 
-    res.json(result.rows);
-
+    res.send("Appointments table created successfully!");
   } catch (error) {
-  console.error("REAL ERROR:", error);
-
-  res.status(500).json({
-    success: false,
-    error: error.message
-  });
-}
+    console.error(error);
+    res.status(500).send(error.message);
+  }
 });
-
 // Start Server
 app.listen(5000, () => {
   console.log("🚀 Server running on port 5000");
