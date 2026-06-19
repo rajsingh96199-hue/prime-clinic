@@ -55,15 +55,12 @@ res.json({
 ```
 
 } catch (error) {
-console.error("❌ Insert Error:", error);
+  console.error("❌ Insert Error:", error);
 
-```
-res.status(500).json({
-  success: false,
-  message: "Database Error",
-});
-```
-
+  res.status(500).json({
+    success: false,
+    error: error.message,
+  });
 }
 });
 
