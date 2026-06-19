@@ -40,20 +40,8 @@ reason,
 
 ```
 const result = await pool.query(
-  `
-  INSERT INTO appointments
-  (
-    name,
-    phone,
-    email,
-    doctor,
-    appointment_date,
-    appointment_time,
-    reason
-  )
-  VALUES ($1,$2,$3,$4,$5,$6,$7)
-  RETURNING *
-  `,
+  const result = await pool.query(
+  "INSERT INTO appointments (name, phone, email, doctor, appointment_date, appointment_time, reason) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",
   [name, phone, email, doctor, date, time, reason]
 );
 
