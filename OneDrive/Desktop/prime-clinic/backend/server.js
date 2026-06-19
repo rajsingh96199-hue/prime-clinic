@@ -76,7 +76,7 @@ app.post("/api/leads", async (req, res) => {
 });
 
 // Get All Appointments
-aapp.get("/create-table", async (req, res) => {
+app.get("/create-table", async (req, res) => {
   try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS appointments (
