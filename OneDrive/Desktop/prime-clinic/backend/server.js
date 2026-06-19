@@ -85,13 +85,13 @@ app.get("/api/leads", async (req, res) => {
     res.json(result.rows);
 
   } catch (error) {
-    console.error("❌ Fetch Error:", error);
+  console.error("REAL ERROR:", error);
 
-    res.status(500).json({
-      success: false,
-      message: "Error fetching appointments",
-    });
-  }
+  res.status(500).json({
+    success: false,
+    error: error.message
+  });
+}
 });
 
 // Start Server
