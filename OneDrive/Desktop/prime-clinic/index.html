@@ -1386,8 +1386,7 @@ box-orient: vertical; overflow: hidden; }
             }
         }
 
-
-        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+document.getElementById('appointmentForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const appointmentData = {
@@ -1400,15 +1399,31 @@ box-orient: vertical; overflow: hidden; }
         reason: document.getElementById('reason').value
     };
 
-    console.log("FORM DATA:");
-    console.log(appointmentData);
+    try {
+        const response = await fetch(
+            "https://prime-clinic.onrender.com/api/leads",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(appointmentData)
+            }
+        );
 
-    alert("NEW CODE RUNNING");
+        const result = await response.json();
 
-    this.reset();
+        alert(result.message);
+
+        console.log(result);
+
+        this.reset();
+
+    } catch (error) {
+        console.error(error);
+        alert("Error connecting to server");
+    }
 });
-       
-
         // GSAP Animations
         if (typeof gsap !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);

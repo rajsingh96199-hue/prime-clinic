@@ -66,26 +66,21 @@ res.json({
 
 // Get All Appointments
 app.get("/api/leads", async (req, res) => {
-try {
-const result = await pool.query(
-"SELECT * FROM appointments ORDER BY created_at DESC"
-);
+  try {
+    const result = await pool.query(
+      "SELECT * FROM appointments ORDER BY created_at DESC"
+    );
 
-```
-res.json(result.rows);
-```
+    res.json(result.rows);
 
-} catch (error) {
-console.error("❌ Fetch Error:", error);
+  } catch (error) {
+    console.error("❌ Fetch Error:", error);
 
-```
-res.status(500).json({
-  success: false,
-  error: error.message,
-});
-```
-
-}
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
 });
 
 // Create Table
