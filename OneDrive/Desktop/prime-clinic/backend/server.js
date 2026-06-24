@@ -25,43 +25,40 @@ console.error(err);
 
 // Create Appointment
 app.post("/api/leads", async (req, res) => {
-console.log("BODY RECEIVED:", req.body);
+  console.log("BODY RECEIVED:", req.body);
 
-try {
-const {
-name,
-phone,
-email,
-doctor,
-date,
-time,
-reason,
-} = req.body;
+  try {
+    const {
+      name,
+      phone,
+      email,
+      doctor,
+      date,
+      time,
+      reason,
+    } = req.body;
 
-```
-const result = await pool.query(
-  const result = await pool.query(
-  "INSERT INTO appointments (name, phone, email, doctor, appointment_date, appointment_time, reason) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",
-  [name, phone, email, doctor, date, time, reason]
-);
+    const result = await pool.query(
+      "INSERT INTO appointments (name, phone, email, doctor, appointment_date, appointment_time, reason) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",
+      [name, phone, email, doctor, date, time, reason]
+    );
 
-console.log("✅ Appointment Saved");
+    console.log("✅ Appointment Saved");
 
-res.json({
-  success: true,
-  message: "Appointment saved successfully",
-  data: result.rows[0],
-});
-```
+    res.json({
+      success: true,
+      message: "Appointment saved successfully",
+      data: result.rows[0],
+    });
 
-} catch (error) {
-  console.error("❌ Insert Error:", error);
+  } catch (error) {
+    console.error("❌ Insert Error:", error);
 
-  res.status(500).json({
-    success: false,
-    error: error.message,
-  });
-}
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
 });
 
 // Get All Appointments
