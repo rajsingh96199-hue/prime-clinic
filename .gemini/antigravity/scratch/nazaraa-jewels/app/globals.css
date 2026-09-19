@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --color-wine-50: #fcf7f8;
+  --color-wine-100: #f7ebed;
+  --color-wine-200: #eed6db;
+  --color-wine-500: #a1374f;
+  --color-wine-600: #87273c;
+  --color-wine-700: #6e1b2e;
+  --color-wine-800: #551221;
+  --color-wine-900: #3d0b16;
+
+  --color-sand-50: #faf7f2;
+  --color-sand-100: #f4efea;
+  --color-sand-200: #eae1d6;
+  --color-sand-300: #d8caba;
+  --color-sand-400: #c3b19d;
+  --color-sand-500: #a8947e;
+
+  --color-charcoal-900: #181615;
+  --color-charcoal-800: #282523;
+  --color-charcoal-700: #3d3835;
+  --color-taupe-500: #7a726a;
+  --color-taupe-400: #9c938a;
+  --color-taupe-300: #c2bbb3;
+  --color-taupe-200: #e2ded9;
+
+  --color-ivory: #fcfaf7;
+  --color-cream: #fdfbf7;
+}
+
+:root {
+  --background: #faf7f2;
+  --foreground: #181615;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #6e1b2e;
+  color: #faf7f2;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4efea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c3b19d;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8947e;
+}
+
